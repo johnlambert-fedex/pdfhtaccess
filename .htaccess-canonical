@@ -1,0 +1,6 @@
+<FilesMatch "\.pdf$">
+    RewriteRule ([^/]+)\.pdf $ - [E=FILENAME:$1]
+    <If "%{REQUEST_URI} =~ m#^/downloads/.*#">
+        Header add Link '<http://www.example.com/papers/%{FILENAME}e>; rel="canonical"'
+    </If>
+</FilesMatch>
